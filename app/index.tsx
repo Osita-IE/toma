@@ -1,6 +1,7 @@
 import { useFonts } from 'expo-font';
+import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
-import { ImageBackground, StyleSheet, Text, TextInput, View } from "react-native";
+import { ImageBackground, Pressable, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 export const options = {
@@ -14,9 +15,10 @@ export default function index () {
   });
 
 
+  const router = useRouter();
   const [text, onChangeText] = useState("");
   const [password, setPassword] = useState("");
-  const image = require ("../assets/images/emmanuel-boldo-3FUXXzpNx3o-unsplash.jpg");
+  const image = require ("../assets/images/pina-messina-qQKv7r1BaRw-unsplash.jpg");
   
   if (!fontsLoaded) {
     return null; // or a loading spinner
@@ -29,17 +31,19 @@ export default function index () {
     <View style={styles.overlay} pointerEvents="none" />
     <View style={styles.headertext}>
       <Text style={{
-        color: "#9CAFAA",
+        color: "#ffff",
         fontSize: 100,
         fontFamily: "DMSerifText-Regular"
-      }}>Hello</Text>
+      }}>TOMA</Text>
       <Text style={{
         fontFamily: "DMSerifText-Italic",
-        color: "#9CAFAA"
-      }}>Sign in to your account</Text>
+        color: "#ffff"
+      }}>Tailor Order Manager App</Text>
     </View>
 
+      
     <View style={styles.box}>
+      {/* <Text style={{color: "#ffff", fontSize: 20}}>Sign In</Text> */}
       <TextInput 
         style={styles.input}
         onChangeText={onChangeText}
@@ -58,9 +62,14 @@ export default function index () {
     </View>
 
     <View>
-      <Text style={styles.signin}>Sign In 
-        <View style={styles.pointer}></View> 
-      </Text>
+      <Pressable
+      style={styles.signin}
+      onPress={() => router.push("../tabs")}
+      >
+        <TouchableOpacity>
+      <Text style={{ textAlign: "center", color: "#ffff", fontSize: 20, fontFamily: "DMSerifText-Italic" }}>Sign In</Text>
+        </TouchableOpacity>
+    </Pressable>
     </View>
   </ImageBackground>
       </SafeAreaView>
@@ -92,7 +101,7 @@ const styles = StyleSheet.create ({
     marginTop: 100,
     marginHorizontal: 20,
     padding: 20,
-    backgroundColor: "#D6DAC8",
+    backgroundColor: "#d6a99dd9",
     borderRadius: 20
   },
   input: {
@@ -107,10 +116,11 @@ const styles = StyleSheet.create ({
     padding: 20,
     width: 200,
     textAlign: "center",
+    
     alignSelf: "center",
     borderRadius: 20,
     fontFamily: "DMSerifText-Italic",
-    backgroundColor: "#ffff"
+    backgroundColor: "#D6DAC8"
   },
   pointer: {
     backgroundColor: "#064232",
