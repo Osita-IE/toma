@@ -27,7 +27,7 @@ export default function index () {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{display: "flex", flexDirection: "column", flex: 1}}>
-    <ImageBackground source={image} resizeMode="stretch" style={styles.image}>
+    <ImageBackground source={image} resizeMode="cover" style={styles.image}>
     <View style={styles.overlay} pointerEvents="none" />
     <View style={styles.headertext}>
       <Text style={{
@@ -37,18 +37,24 @@ export default function index () {
       }}>TOMA</Text>
       <Text style={{
         fontFamily: "DMSerifText-Italic",
-        color: "#ffff"
+        color: "#EAD9C6"
       }}>Tailor Order Manager App</Text>
     </View>
 
       
     <View style={styles.box}>
       {/* <Text style={{color: "#ffff", fontSize: 20}}>Sign In</Text> */}
-      <TextInput 
+      {/* <TextInput 
         style={styles.input}
         onChangeText={onChangeText}
         value={text}
         placeholder="Username"
+      /> */}
+      <TextInput 
+        style={styles.input}
+        onChangeText={onChangeText}
+        value={text}
+        placeholder="Email"
       />
       <TextInput
         style={styles.input}
@@ -58,7 +64,7 @@ export default function index () {
         placeholder="password"
         keyboardType="numeric"
       />
-      <Text>Forgot your password?</Text>
+      <Text style={{color: "#F5EDE6", marginTop: 20}}>Forgot your password?</Text>
     </View>
 
     <View>
@@ -67,9 +73,10 @@ export default function index () {
       onPress={() => router.push("../tabs")}
       >
         <TouchableOpacity>
-      <Text style={{ textAlign: "center", color: "#ffff", fontSize: 20, fontFamily: "DMSerifText-Italic" }}>Sign In</Text>
+      <Text style={{ textAlign: "center", color: "#F5EDE6", fontSize: 20, fontFamily: "DMSerifText-Italic" }}>Sign Up</Text>
         </TouchableOpacity>
     </Pressable>
+    {/* <Text style={{display: "flex", textAlign: "center", color: "#EAD9C6", fontSize: 15, marginTop: 100}}>Already have an account? Log In</Text> */}
     </View>
   </ImageBackground>
       </SafeAreaView>
@@ -101,15 +108,15 @@ const styles = StyleSheet.create ({
     marginTop: 100,
     marginHorizontal: 20,
     padding: 20,
-    backgroundColor: "#d6a99dd9",
+    backgroundColor: "#C98F8F",
     borderRadius: 20
   },
   input: {
     width: 250,
-    backgroundColor: "#FBF3D5",
+    backgroundColor: "#F5EDE6",
     borderRadius: 50,
     margin: 10,
-    padding: 20,
+    padding: 20
   },
   signin: {
     margin: 40,
@@ -118,9 +125,9 @@ const styles = StyleSheet.create ({
     textAlign: "center",
     
     alignSelf: "center",
-    borderRadius: 20,
+    borderRadius: 50,
     fontFamily: "DMSerifText-Italic",
-    backgroundColor: "#D6DAC8"
+    backgroundColor: "#B76E6E"
   },
   pointer: {
     backgroundColor: "#064232",
