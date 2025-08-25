@@ -32,13 +32,14 @@ export default function index () {
     <View style={styles.headertext}>
       <Text style={{
         color: "#ffff",
-        fontSize: 100,
+        fontSize: 60,
         fontFamily: "DMSerifText-Regular"
-      }}>TOMA</Text>
+      }}>Welcome!</Text>
       <Text style={{
-        fontFamily: "DMSerifText-Italic",
-        color: "#EAD9C6"
-      }}>Tailor Order Manager App</Text>
+        color: "#ffff",
+        fontSize: 20,
+        fontFamily: "DMSerifText-Regular"
+      }}>Sign In</Text>
     </View>
 
       
@@ -55,6 +56,7 @@ export default function index () {
         onChangeText={onChangeText}
         value={text}
         placeholder="Email"
+        placeholderTextColor={"white"}
       />
       <TextInput
         style={styles.input}
@@ -62,9 +64,10 @@ export default function index () {
         onChangeText={setPassword}
         value={password}
         placeholder="password"
+        placeholderTextColor={"white"}
         keyboardType="numeric"
       />
-      <Text style={{color: "#F5EDE6", marginTop: 20}}>Forgot your password?</Text>
+      <Text style={{color: "#00000", marginTop: 20}}>Forgot your password?</Text>
     </View>
 
     <View>
@@ -73,7 +76,7 @@ export default function index () {
       onPress={() => router.push("../tabs")}
       >
         <TouchableOpacity>
-      <Text style={{ textAlign: "center", color: "#F5EDE6", fontSize: 20, fontFamily: "DMSerifText-Italic" }}>Sign Up</Text>
+      <Text style={{ textAlign: "center", color: "#C58940", fontSize: 20, fontFamily: "DMSerifText-Italic" }}>Sign In</Text>
         </TouchableOpacity>
     </Pressable>
     {/* <Text style={{display: "flex", textAlign: "center", color: "#EAD9C6", fontSize: 15, marginTop: 100}}>Already have an account? Log In</Text> */}
@@ -98,22 +101,22 @@ const styles = StyleSheet.create ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    marginTop: 30
+    marginTop: 50,
   },
   box: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     height: 300,
-    marginTop: 100,
-    marginHorizontal: 20,
+    marginTop: 150,
+    marginHorizontal: 30,
     padding: 20,
-    backgroundColor: "#C98F8F",
+    backgroundColor: "#ffffffdc",
     borderRadius: 20
   },
   input: {
     width: 250,
-    backgroundColor: "#F5EDE6",
+    backgroundColor: "#a78d6eff",
     borderRadius: 50,
     margin: 10,
     padding: 20
@@ -127,7 +130,7 @@ const styles = StyleSheet.create ({
     alignSelf: "center",
     borderRadius: 50,
     fontFamily: "DMSerifText-Italic",
-    backgroundColor: "#B76E6E"
+    backgroundColor: "#ffff"
   },
   pointer: {
     backgroundColor: "#064232",
