@@ -1,7 +1,7 @@
 import { useFonts } from 'expo-font';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
-import { ImageBackground, Pressable, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Pressable, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 export const options = {
@@ -18,7 +18,7 @@ export default function index () {
   const router = useRouter();
   const [text, onChangeText] = useState("");
   const [password, setPassword] = useState("");
-  const image = require ("../../assets/images/pina-messina-qQKv7r1BaRw-unsplash.jpg");
+  const image = require ("../../assets/images/diana-polekhina-iUfusOthmgQ-unsplash.jpg");
   
   if (!fontsLoaded) {
     return null; // or a loading spinner
@@ -27,37 +27,29 @@ export default function index () {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{display: "flex", flexDirection: "column", flex: 1}}>
-    <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-    <View style={styles.overlay} pointerEvents="none" />
+    {/* <ImageBackground source={image} blurRadius={3} resizeMode="cover" style={styles.image}> */}
+    {/* <View style={styles.overlay} pointerEvents="none" /> */}
     <View style={styles.headertext}>
       <Text style={{
-        color: "#ffff",
-        fontSize: 60,
+        color: "#000",
+        fontSize: 80,
         fontFamily: "DMSerifText-Regular"
-      }}>Welcome!</Text>
+      }}>TOMA</Text>
       <Text style={{
-        color: "#ffff",
-        fontSize: 20,
+        color: "#000",
+        fontSize: 10,
         fontFamily: "DMSerifText-Regular"
-      }}>Sign In</Text>
+      }}>tailor order manager app</Text>
     </View>
 
       
     <View style={styles.box}>
-      {/* <Text style={{color: "#ffff", fontSize: 20}}>Sign In</Text> */}
-      {/* <TextInput 
-        style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
-        placeholder="Username"
-      /> */}
       <TextInput 
         style={styles.input}
         onChangeText={onChangeText}
         value={text}
         placeholder="Email"
-        placeholderTextColor={"white"}
-        
+        placeholderTextColor={"#000"}
       />
       <TextInput
         style={styles.input}
@@ -65,10 +57,10 @@ export default function index () {
         onChangeText={setPassword}
         value={password}
         placeholder="password"
-        placeholderTextColor={"white"}
+        placeholderTextColor={"#000"}
         keyboardType="numeric"
       />
-      <Text style={{color: "#00000", marginTop: 20}}>Forgot your password?</Text>
+      <Text style={{color: "#ffff", marginTop: 20}}>Forgot your password?</Text>
     </View>
 
     <View>
@@ -77,12 +69,21 @@ export default function index () {
       onPress={() => router.push("../tabs")}
       >
         <TouchableOpacity>
-      <Text style={{ textAlign: "center", color: "#C58940", fontSize: 20, fontFamily: "DMSerifText-Italic" }}>Sign In</Text>
+      <Text style={{ textAlign: "center", color: "#ffff", fontSize: 20, fontFamily: "DMSerifText-Italic" }}>Log In</Text>
         </TouchableOpacity>
     </Pressable>
     {/* <Text style={{display: "flex", textAlign: "center", color: "#EAD9C6", fontSize: 15, marginTop: 100}}>Already have an account? Log In</Text> */}
     </View>
-  </ImageBackground>
+
+      <View style={styles.createaccount}>
+        <Pressable
+      onPress={() => router.push("/login/create-account")}
+      >
+        <Text style={{color: "#000", fontSize: 15, fontFamily: "DMSerifText-Italic"}}>Create Account</Text>
+        </Pressable>
+      </View>
+
+  {/* </ImageBackground> */}
       </SafeAreaView>
     </SafeAreaProvider>
   );
@@ -112,12 +113,12 @@ const styles = StyleSheet.create ({
     marginTop: 150,
     marginHorizontal: 30,
     padding: 20,
-    backgroundColor: "#ffffffdc",
-    borderRadius: 20
+    backgroundColor: "#000000d0",
+    borderRadius: 20,
   },
   input: {
     width: 250,
-    backgroundColor: "#a78d6eff",
+    backgroundColor: "#ffff",
     borderRadius: 50,
     margin: 10,
     padding: 20
@@ -127,14 +128,15 @@ const styles = StyleSheet.create ({
     padding: 20,
     width: 200,
     textAlign: "center",
-    
     alignSelf: "center",
     borderRadius: 50,
     fontFamily: "DMSerifText-Italic",
-    backgroundColor: "#ffff"
+    backgroundColor: "#000000d0"
   },
-  pointer: {
-    backgroundColor: "#064232",
-    color: "#064232"
+  createaccount: {
+    flex: 1,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
