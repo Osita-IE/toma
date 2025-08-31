@@ -1,6 +1,6 @@
 import { useFonts } from 'expo-font';
 import { useRouter } from 'expo-router';
-import React, { useState } from 'react';
+import React from 'react';
 import { ImageBackground, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
@@ -16,8 +16,6 @@ export default function index () {
 
 
   const router = useRouter();
-  const [text, onChangeText] = useState("");
-  const [password, setPassword] = useState("");
   const image = require ("../assets/images/measuring-2923809.jpg");
   
   if (!fontsLoaded) {
@@ -27,7 +25,7 @@ export default function index () {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{display: "flex", flexDirection: "column", flex: 1}}>
-    <ImageBackground source={image} resizeMode="cover" blurRadius={7} style={styles.image}>
+    <ImageBackground source={image} resizeMode="cover" blurRadius={14} style={styles.image}>
     <View style={styles.overlay} pointerEvents="none" />
       <View style={styles.centercontainer}>
         <View style={styles.headertext}>
@@ -44,7 +42,7 @@ export default function index () {
         onPress={() => router.push("/login/start")}
         >
           <TouchableOpacity>
-            <Text style={{ textAlign: "center", color: "#9c8d08ff", fontSize: 25, fontFamily: "DMSerifText-Italic" }}>Get Started</Text>
+            <Text style={{ textAlign: "center", color: "#FFFFF0", fontSize: 25, fontFamily: "DMSerifText-Italic" }}>Get Started</Text>
           </TouchableOpacity>
         </Pressable>
       </View>
@@ -85,6 +83,6 @@ const styles = StyleSheet.create ({
     alignSelf: "center",
     borderRadius: 20,
     fontFamily: "DMSerifText-Italic",
-    backgroundColor: "#ffff"
+    backgroundColor: "#1A1A2E"
   },
 });

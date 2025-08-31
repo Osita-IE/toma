@@ -19,23 +19,23 @@ export default function Index() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
-          <View>
+          <View style={styles.box}>
             <View style={styles.create}>
-                <Text style={{fontSize: 30, fontFamily: "DMSerifText-Regular.ttf" }}>Create Account</Text>
+                <Text style={{color: "#1A1A2E", fontSize: 30, fontFamily: "DMSerifText-Regular" }}>Create Account</Text>
             </View>
             <TextInput 
                 style={styles.input}
                 onChangeText={onChangeText}
                 value={text}
                 placeholder="name"
-                placeholderTextColor={"#ffff"}
+                placeholderTextColor={"#a8a5a5ff"}
                 />
             <TextInput 
                 style={styles.input}
                 onChangeText={onChangeText}
                 value={text}
                 placeholder="email"
-                placeholderTextColor={"#ffff"}
+                placeholderTextColor={"#a8a5a5ff"}
                 />
             <TextInput
                 style={styles.input}
@@ -43,14 +43,14 @@ export default function Index() {
                 onChangeText={setPassword}
                 value={password}
                 placeholder="password"
-                placeholderTextColor={"#ffff"}
+                placeholderTextColor={"#a8a5a5ff"}
                 keyboardType="numeric"
             />
             <Pressable
             onPress={() => router.push("../login/start")}
             >
                 <View style={styles.signup}>
-                <Text style={{color: "#ffff"}}>Sign Up</Text>
+                <Text style={{color: "#FFFFF0"}}>Sign Up</Text>
                 </View>
             </Pressable>
           </View>
@@ -69,10 +69,17 @@ const styles = StyleSheet.create({
   create: {
     justifyContent: "center",
     alignItems: "center",
-
+  },
+  box: {
+    backgroundColor: "none",
+    height: "50%",
+    width: "80%",
+    borderWidth: 2,
+    borderRadius: 20,
+    borderColor: "#1A1A2E"
   },
   input: {
-    backgroundColor: "#000",
+    backgroundColor: "#1A1A2E",
     width: 300,
     height: 50,
     paddingLeft: 20,
@@ -80,10 +87,11 @@ const styles = StyleSheet.create({
     borderRadius: 30,
   },
   signup: {
-    backgroundColor: "#000",
+    backgroundColor: "#1A1A2E",
     width: 300,
     height: 50,
     paddingLeft: 20,
+    marginTop: 50,
     margin: 20,
     borderRadius: 30,
     alignItems: "center",

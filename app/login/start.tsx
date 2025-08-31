@@ -27,63 +27,64 @@ export default function index () {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{display: "flex", flexDirection: "column", flex: 1}}>
-    {/* <ImageBackground source={image} blurRadius={3} resizeMode="cover" style={styles.image}> */}
-    {/* <View style={styles.overlay} pointerEvents="none" /> */}
-    <View style={styles.headertext}>
-      <Text style={{
-        color: "#000",
-        fontSize: 80,
-        fontFamily: "DMSerifText-Regular"
-      }}>TOMA</Text>
-      <Text style={{
-        color: "#000",
-        fontSize: 10,
-        fontFamily: "DMSerifText-Regular"
-      }}>tailor order manager app</Text>
-    </View>
+                
+          <View style={styles.headertext}>
+            <Text style={{
+              color: "#1A1A2E",
+              fontSize: 80,
+              fontFamily: "DMSerifText-Regular"
+            }}>TOMA</Text>
+            <Text style={{
+              color: "#a8a5a5ff",
+              fontSize: 10,
+              fontFamily: "DMSerifText-Regular",
+              fontStyle: "italic"
+            }}>tailor order manager app</Text>
+          </View>
 
-      
-    <View style={styles.box}>
-      <TextInput 
-        style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
-        placeholder="Email"
-        placeholderTextColor={"#000"}
-      />
-      <TextInput
-        style={styles.input}
-        secureTextEntry={true}
-        onChangeText={setPassword}
-        value={password}
-        placeholder="password"
-        placeholderTextColor={"#000"}
-        keyboardType="numeric"
-      />
-      <Text style={{color: "#ffff", marginTop: 20}}>Forgot your password?</Text>
-    </View>
+            
+          <View style={styles.box}>
+            <TextInput 
+              style={styles.input}
+              onChangeText={onChangeText}
+              value={text}
+              placeholder="Email"
+              placeholderTextColor={"#000"}
+            />
+            <TextInput
+              style={styles.input}
+              secureTextEntry={true}
+              onChangeText={setPassword}
+              value={password}
+              placeholder="password"
+              placeholderTextColor={"#000"}
+              keyboardType="numeric"
+            />
+            <Pressable
+            onPress={() => router.push("../login/forgot-password")}
+            >
+            <Text style={{color: "#ffff", marginTop: 20}}>Forgot your password?</Text>
+            </Pressable>
+          </View>
 
-    <View>
-      <Pressable
-      style={styles.signin}
-      onPress={() => router.push("../tabs")}
-      >
-        <TouchableOpacity>
-      <Text style={{ textAlign: "center", color: "#ffff", fontSize: 20, fontFamily: "DMSerifText-Italic" }}>Log In</Text>
-        </TouchableOpacity>
-    </Pressable>
-    {/* <Text style={{display: "flex", textAlign: "center", color: "#EAD9C6", fontSize: 15, marginTop: 100}}>Already have an account? Log In</Text> */}
-    </View>
+          <View>
+            <Pressable
+            style={styles.signin}
+            onPress={() => router.push("../tabs")}
+            >
+              <TouchableOpacity>
+            <Text style={{ textAlign: "center", color: "#DDC01C", fontSize: 20, fontFamily: "DMSerifText-Italic" }}>Log In</Text>
+              </TouchableOpacity>
+          </Pressable>
+          </View>
 
-      <View style={styles.createaccount}>
-        <Pressable
-      onPress={() => router.push("/login/create-account")}
-      >
-        <Text style={{color: "#000", fontSize: 15, fontFamily: "DMSerifText-Italic"}}>Create Account</Text>
-        </Pressable>
-      </View>
-
-  {/* </ImageBackground> */}
+            <View style={styles.createaccount}>
+              <Pressable
+            onPress={() => router.push("/login/create-account")}
+            >
+              <Text style={{color: "#1A1A2E", fontSize: 15, fontFamily: "DMSerifText-Italic"}}>Create Account</Text>
+              </Pressable>
+        </View>
       </SafeAreaView>
     </SafeAreaProvider>
   );
@@ -113,12 +114,12 @@ const styles = StyleSheet.create ({
     marginTop: 150,
     marginHorizontal: 30,
     padding: 20,
-    backgroundColor: "#000000d0",
+    backgroundColor: "#1A1A2E",
     borderRadius: 20,
   },
   input: {
     width: 250,
-    backgroundColor: "#ffff",
+    backgroundColor: "#DDC01C",
     borderRadius: 50,
     margin: 10,
     padding: 20
@@ -131,7 +132,7 @@ const styles = StyleSheet.create ({
     alignSelf: "center",
     borderRadius: 50,
     fontFamily: "DMSerifText-Italic",
-    backgroundColor: "#000000d0"
+    backgroundColor: "#1A1A2E"
   },
   createaccount: {
     flex: 1,

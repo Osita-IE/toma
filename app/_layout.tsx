@@ -13,6 +13,11 @@ export default function RootLayout() {
         headerShown:false,
       }}/>
       <Stack.Screen 
+      name="login/forgot-password"
+      options={{
+        headerShown:false,
+      }}/>
+      <Stack.Screen 
       name="login/create-account"
       options={{
         headerShown:false,

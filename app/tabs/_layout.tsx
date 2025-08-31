@@ -2,7 +2,7 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { Tabs } from "expo-router";
 
 const themeColors = {
-  tabBarActiveTintColor: "#000",
+  tabBarActiveTintColor: "#1A1A2E",
 };
 
 export default function _layout () {
@@ -19,7 +19,7 @@ export default function _layout () {
                 <FontAwesome5 
                 name="users" 
                 size={24} 
-                color="#000" />
+                color="#FFD700" />
             }} />
 
             <Tabs.Screen
@@ -31,7 +31,7 @@ export default function _layout () {
                 <FontAwesome5
                 name="list-ul" 
                 size={24} 
-                color="#000"/>
+                color="#FFD700"/>
             }} />
 
             <Tabs.Screen
@@ -43,7 +43,7 @@ export default function _layout () {
                 <FontAwesome5 
                 name="pencil-ruler" 
                 size={24} 
-                color="#000" />
+                color="#FFD700" />
             }} />
         </Tabs>
     );
