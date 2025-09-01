@@ -2,7 +2,7 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { Tabs } from "expo-router";
 
 const themeColors = {
-  tabBarActiveTintColor: "#1A1A2E",
+  tabBarActiveTintColor: "#a8a5a5ff",
 };
 
 export default function _layout () {
