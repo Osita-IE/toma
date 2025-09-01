@@ -16,7 +16,7 @@ export default function index () {
 
 
   const router = useRouter();
-  const image = require ("../assets/images/measuring-2923809.jpg");
+  const image = require ("../assets/images/bozhin-karaivanov-p1jldJ9tZ6c-unsplash.jpg");
   
   if (!fontsLoaded) {
     return null; // or a loading spinner
@@ -25,13 +25,13 @@ export default function index () {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{display: "flex", flexDirection: "column", flex: 1}}>
-    <ImageBackground source={image} resizeMode="cover" blurRadius={14} style={styles.image}>
+    <ImageBackground source={image} resizeMode="cover" blurRadius={7} style={styles.image}>
     <View style={styles.overlay} pointerEvents="none" />
       <View style={styles.centercontainer}>
         <View style={styles.headertext}>
         <Text style={{
             color: "#ffff",
-            fontSize: 60,
+            fontSize: 70,
             fontFamily: "DMSerifText-Regular"
         }}>Welcome!</Text>
         </View>
@@ -42,7 +42,7 @@ export default function index () {
         onPress={() => router.push("/login/start")}
         >
           <TouchableOpacity>
-            <Text style={{ textAlign: "center", color: "#FFFFF0", fontSize: 25, fontFamily: "DMSerifText-Italic" }}>Get Started</Text>
+            <Text style={{ textAlign: "center", color: "#05032bff", fontSize: 25, fontFamily: "DMSerifText-Italic" }}>Get Started</Text>
           </TouchableOpacity>
         </Pressable>
       </View>
@@ -74,15 +74,16 @@ const styles = StyleSheet.create ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    paddingBottom: 20
+    paddingBottom: 10
   },
   signin: {
     padding: 15,
     width: 200,
+    height: 60,
     textAlign: "center",
     alignSelf: "center",
     borderRadius: 20,
     fontFamily: "DMSerifText-Italic",
-    backgroundColor: "#1A1A2E"
+    backgroundColor: "#c2c2c2ff"
   },
 });

@@ -73,7 +73,7 @@ export default function index () {
             onPress={() => router.push("../tabs")}
             >
               <TouchableOpacity>
-            <Text style={{ textAlign: "center", color: "#DDC01C", fontSize: 20, fontFamily: "DMSerifText-Italic" }}>Log In</Text>
+            <Text style={{ textAlign: "center", color: "#d9daeeff", fontSize: 20, fontFamily: "DMSerifText-Italic" }}>Log In</Text>
               </TouchableOpacity>
           </Pressable>
           </View>
@@ -119,7 +119,7 @@ const styles = StyleSheet.create ({
   },
   input: {
     width: 250,
-    backgroundColor: "#DDC01C",
+    backgroundColor: "#d9daeeff",
     borderRadius: 50,
     margin: 10,
     padding: 20

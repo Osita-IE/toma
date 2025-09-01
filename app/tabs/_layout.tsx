@@ -19,7 +19,7 @@ export default function _layout () {
                 <FontAwesome5 
                 name="users" 
                 size={24} 
-                color="#FFD700" />
+                color="#1A1A2E" />
             }} />
 
             <Tabs.Screen
@@ -31,7 +31,7 @@ export default function _layout () {
                 <FontAwesome5
                 name="list-ul" 
                 size={24} 
-                color="#FFD700"/>
+                color="#1A1A2E"/>
             }} />
 
             <Tabs.Screen
@@ -43,7 +43,7 @@ export default function _layout () {
                 <FontAwesome5 
                 name="pencil-ruler" 
                 size={24} 
-                color="#FFD700" />
+                color="#1A1A2E" />
             }} />
         </Tabs>
     );

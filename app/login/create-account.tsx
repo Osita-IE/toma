@@ -71,6 +71,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   box: {
+    display: "flex",
+    // justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "none",
     height: "50%",
     width: "80%",
