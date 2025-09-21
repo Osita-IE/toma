@@ -3,9 +3,10 @@ import { Stack } from "expo-router";
 export default function RootLayout() {
   return(
     <Stack>
-      <Stack.Screen name="index"
+      <Stack.Screen 
+      name="index"
       options={{
-        headerShown: false 
+        headerShown:false,
       }}/>
       <Stack.Screen 
       name="login/start"
@@ -41,6 +42,10 @@ export default function RootLayout() {
       name="measurements"
       options={{
         headerShown:false,
+      }}/>
+      <Stack.Screen name="history"
+      options={{
+        headerShown: false 
       }}/>
     </Stack>
   );

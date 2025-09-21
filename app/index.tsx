@@ -1,89 +1,99 @@
-import { useFonts } from 'expo-font';
-import { useRouter } from 'expo-router';
-import React from 'react';
-import { ImageBackground, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import { useFonts } from "expo-font";
+import { useRouter } from "expo-router";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 export const options = {
-  title: '',
+  title: "",
 };
 
-export default function index () {
+export default function Index() {
   const [fontsLoaded] = useFonts({
-    'DMSerifText-Italic': require('../assets/fonts/DMSerifText-Italic.ttf'),
-    'DMSerifText-Regular': require('../assets/fonts/DMSerifText-Regular.ttf'),
+    "DMSerifText-Italic": require("../assets/fonts/DMSerifText-Italic.ttf"),
+    "DMSerifText-Regular": require("../assets/fonts/DMSerifText-Regular.ttf"),
   });
 
-
   const router = useRouter();
-  const image = require ("../assets/images/bozhin-karaivanov-p1jldJ9tZ6c-unsplash.jpg");
-  
+
   if (!fontsLoaded) {
-    return null; // or a loading spinner
+    return null;
   }
 
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={{display: "flex", flexDirection: "column", flex: 1}}>
-    <ImageBackground source={image} resizeMode="cover" blurRadius={7} style={styles.image}>
-    <View style={styles.overlay} pointerEvents="none" />
-      <View style={styles.centercontainer}>
-        <View style={styles.headertext}>
-        <Text style={{
-            color: "#ffff",
-            fontSize: 70,
-            fontFamily: "DMSerifText-Regular"
-        }}>Welcome!</Text>
+      <SafeAreaView style={styles.container}>
+        {/* Logo / Icon */}
+        <View style={styles.iconWrapper}>
+          <FontAwesome6 name="scissors" size={24} color="black" />
         </View>
 
-        <View>
+        {/* Title & Tagline */}
+        <View style={styles.textWrapper}>
+          <Text style={styles.title}>Tailor Order Tracker</Text>
+          <Text style={styles.tagline}>
+            “Log In. Stay Sharp. Track Seamlessly.”
+          </Text>
+        </View>
+
+        {/* Get Started Button */}
         <Pressable
-        style={styles.signin}
-        onPress={() => router.push("/login/start")}
+          style={styles.getStartedBtn}
+          onPress={() => router.push("/login/start")}
         >
-          <TouchableOpacity>
-            <Text style={{ textAlign: "center", color: "#05032bff", fontSize: 25, fontFamily: "DMSerifText-Italic" }}>Get Started</Text>
-          </TouchableOpacity>
+          <Text style={styles.btnText}>Get Started</Text>
         </Pressable>
-      </View>
-    </View>
-  </ImageBackground>
       </SafeAreaView>
     </SafeAreaProvider>
   );
 }
 
-const styles = StyleSheet.create ({
-    overlay: {
+const styles = StyleSheet.create({
+  container: {
     flex: 1,
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0,0,0,0.5)', // Change 0.3 to your desired opacity
-    zIndex: 1,
-  },
-  image: {
-    flex: 1,
-    width: "100%",
-  },
-  centercontainer: {
-    flex: 1,
-    justifyContent: "center",
+    backgroundColor: "#DCF2F1", // main background
     alignItems: "center",
-    zIndex: 2
+    justifyContent: "space-between",
+    paddingVertical: 80,
   },
-  headertext: {
-    display: "flex",
-    flexDirection: "column",
+  iconWrapper: {
+    backgroundColor: "#7FC7D9",
+    padding: 20,
+    borderRadius: 100,
+    marginTop: 40,
+  },
+  textWrapper: {
     alignItems: "center",
-    paddingBottom: 10
+    paddingHorizontal: 20,
   },
-  signin: {
-    padding: 15,
-    width: 200,
-    height: 60,
+  title: {
+    fontSize: 32,
+    fontFamily: "DMSerifText-Regular",
+    color: "#0F1035",
     textAlign: "center",
-    alignSelf: "center",
-    borderRadius: 20,
+    marginBottom: 8,
+  },
+  tagline: {
+    fontSize: 14,
     fontFamily: "DMSerifText-Italic",
-    backgroundColor: "#c2c2c2ff"
+    color: "#365486",
+    textAlign: "center",
+  },
+  getStartedBtn: {
+    backgroundColor: "#365486",
+    paddingVertical: 15,
+    paddingHorizontal: 50,
+    borderRadius: 25,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    elevation: 5,
+    marginBottom: 50,
+  },
+  btnText: {
+    color: "#fff",
+    fontSize: 18,
+    fontFamily: "DMSerifText-Regular",
   },
 });

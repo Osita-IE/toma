@@ -45,6 +45,18 @@ export default function _layout () {
                 size={24} 
                 color="#1A1A2E" />
             }} />
+
+            <Tabs.Screen
+                name="history"
+                options={{
+                title: "History",
+                headerShown: true,
+                tabBarIcon: ({ color }) =>
+                <FontAwesome5 
+                name="history" 
+                size={24} 
+                color="#000000" />
+            }} />
         </Tabs>
     );
 };

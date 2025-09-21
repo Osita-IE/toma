@@ -1,143 +1,179 @@
-import { useFonts } from 'expo-font';
-import { useRouter } from 'expo-router';
-import React, { useState } from 'react';
-import { Pressable, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { useFonts } from "expo-font";
+import { useRouter } from "expo-router";
+import { useState } from "react";
+import { ActivityIndicator, Alert, Pressable, StyleSheet, Text, TextInput, View, } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
+// 👇 firebase auth
+import { auth } from "@/config/firebase.config";
+import { signInWithEmailAndPassword } from "firebase/auth";
+
 export const options = {
-  title: '',
+  title: "",
 };
 
-export default function index () {
+export default function Index() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const [fontsLoaded] = useFonts({
-    'DMSerifText-Italic': require('../../assets/fonts/DMSerifText-Italic.ttf'),
-    'DMSerifText-Regular': require('../../assets/fonts/DMSerifText-Regular.ttf'),
+    "DMSerifText-Italic": require("../../assets/fonts/DMSerifText-Italic.ttf"),
+    "DMSerifText-Regular": require("../../assets/fonts/DMSerifText-Regular.ttf"),
   });
 
-
   const router = useRouter();
-  const [text, onChangeText] = useState("");
-  const [password, setPassword] = useState("");
-  const image = require ("../../assets/images/diana-polekhina-iUfusOthmgQ-unsplash.jpg");
-  
+
   if (!fontsLoaded) {
-    return null; // or a loading spinner
+    return null;
   }
+
+  const handleLogin = async () => {
+    if (!email || !password) {
+      Alert.alert("Missing Fields", "Please enter email and password.");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      await signInWithEmailAndPassword(auth, email.trim(), password);
+      router.push("../tabs"); // redirect after success
+    } catch (error: any) {
+      console.log("Login error:", error.message);
+      Alert.alert("Login Failed", error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={{display: "flex", flexDirection: "column", flex: 1}}>
-                
-          <View style={styles.headertext}>
-            <Text style={{
-              color: "#1A1A2E",
-              fontSize: 80,
-              fontFamily: "DMSerifText-Regular"
-            }}>TOMA</Text>
-            <Text style={{
-              color: "#a8a5a5ff",
-              fontSize: 10,
-              fontFamily: "DMSerifText-Regular",
-              fontStyle: "italic"
-            }}>tailor order manager app</Text>
-          </View>
+      <SafeAreaView style={styles.container}>
+        {/* Header */}
+        <View style={styles.header}>
+          <Text style={styles.title}>Welcome Back!</Text>
+          <Text style={styles.subtitle}>Log in to track your orders</Text>
+        </View>
 
-            
-          <View style={styles.box}>
-            <TextInput 
-              style={styles.input}
-              onChangeText={onChangeText}
-              value={text}
-              placeholder="Email"
-              placeholderTextColor={"#000"}
-            />
-            <TextInput
-              style={styles.input}
-              secureTextEntry={true}
-              onChangeText={setPassword}
-              value={password}
-              placeholder="password"
-              placeholderTextColor={"#000"}
-              keyboardType="numeric"
-            />
-            <Pressable
-            onPress={() => router.push("../login/forgot-password")}
-            >
-            <Text style={{color: "#ffff", marginTop: 20}}>Forgot your password?</Text>
-            </Pressable>
-          </View>
+        {/* Form */}
+        <View style={styles.form}>
+          <TextInput
+            style={styles.input}
+            onChangeText={setEmail}
+            value={email}
+            placeholder="Email"
+            placeholderTextColor="#365486"
+            autoCapitalize="none"
+            keyboardType="email-address"
+          />
+          <TextInput
+            style={styles.input}
+            secureTextEntry={true}
+            onChangeText={setPassword}
+            value={password}
+            placeholder="Password"
+            placeholderTextColor="#365486"
+          />
 
-          <View>
-            <Pressable
-            style={styles.signin}
-            onPress={() => router.push("../tabs")}
-            >
-              <TouchableOpacity>
-            <Text style={{ textAlign: "center", color: "#d9daeeff", fontSize: 20, fontFamily: "DMSerifText-Italic" }}>Log In</Text>
-              </TouchableOpacity>
+          <Pressable onPress={() => router.push("../login/forgot-password")}>
+            <Text style={styles.forgotText}>Forgot your password?</Text>
           </Pressable>
-          </View>
 
-            <View style={styles.createaccount}>
-              <Pressable
-            onPress={() => router.push("/login/create-account")}
-            >
-              <Text style={{color: "#1A1A2E", fontSize: 15, fontFamily: "DMSerifText-Italic"}}>Create Account</Text>
-              </Pressable>
+          <Pressable
+            style={styles.signin}
+            onPress={handleLogin}
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <ActivityIndicator color="#fff" />
+            ) : (
+              <Text style={styles.signinText}>Log In</Text>
+            )}
+          </Pressable>
+        </View>
+
+        {/* Footer */}
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>Don’t have an account?</Text>
+          <Pressable onPress={() => router.push("/login/create-account")}>
+            <Text style={styles.signupText}> Sign Up</Text>
+          </Pressable>
         </View>
       </SafeAreaView>
     </SafeAreaProvider>
   );
 }
 
-const styles = StyleSheet.create ({
-    overlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0,0,0,0.2)', // Change 0.3 to your desired opacity
-    zIndex: 1,
-  },
-  image: {
+const styles = StyleSheet.create({
+  container: {
     flex: 1,
-    width: "100%",
-  },
-  headertext: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    marginTop: 50,
-  },
-  box: {
-    display: "flex",
+    backgroundColor: "#DCF2F1",
     justifyContent: "center",
+    paddingHorizontal: 20,
+  },
+  header: {
     alignItems: "center",
-    height: 300,
-    marginTop: 150,
-    marginHorizontal: 30,
+    marginBottom: 40,
+  },
+  title: {
+    fontSize: 28,
+    fontFamily: "DMSerifText-Regular",
+    color: "#0F1035",
+  },
+  subtitle: {
+    fontSize: 14,
+    color: "#365486",
+    marginTop: 5,
+    fontFamily: "DMSerifText-Italic",
+  },
+  form: {
+    backgroundColor: "#7FC7D9",
     padding: 20,
-    backgroundColor: "#1A1A2E",
     borderRadius: 20,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 3,
   },
   input: {
-    width: 250,
-    backgroundColor: "#d9daeeff",
-    borderRadius: 50,
-    margin: 10,
-    padding: 20
+    width: "100%",
+    backgroundColor: "#DCF2F1",
+    borderRadius: 12,
+    marginVertical: 10,
+    padding: 15,
+    color: "#0F1035",
+    fontSize: 16,
+  },
+  forgotText: {
+    color: "#0F1035",
+    fontSize: 13,
+    marginTop: 10,
+    textAlign: "right",
   },
   signin: {
-    margin: 40,
-    padding: 20,
-    width: 200,
-    textAlign: "center",
-    alignSelf: "center",
-    borderRadius: 50,
-    fontFamily: "DMSerifText-Italic",
-    backgroundColor: "#1A1A2E"
-  },
-  createaccount: {
-    flex: 1,
-    display: "flex",
-    justifyContent: "center",
+    marginTop: 25,
+    backgroundColor: "#365486",
+    paddingVertical: 15,
+    borderRadius: 30,
     alignItems: "center",
+  },
+  signinText: {
+    color: "#fff",
+    fontSize: 18,
+    fontFamily: "DMSerifText-Regular",
+  },
+  footer: {
+    marginTop: 30,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  footerText: {
+    color: "#0F1035",
+    fontSize: 14,
+  },
+  signupText: {
+    color: "#365486",
+    fontSize: 14,
+    fontFamily: "DMSerifText-Italic",
   },
 });
