@@ -39,7 +39,7 @@ export default function Index() {
         {/* Get Started Button */}
         <Pressable
           style={styles.getStartedBtn}
-          onPress={() => router.push("/login/start")}
+          onPress={() => router.push("/(login)/start")}
         >
           <Text style={styles.btnText}>Get Started</Text>
         </Pressable>

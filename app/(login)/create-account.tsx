@@ -1,4 +1,3 @@
-import { useFonts } from "expo-font";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { ActivityIndicator, Alert, Pressable, SafeAreaView, StyleSheet, Text, TextInput, View, } from "react-native";
@@ -6,6 +5,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 
 // 👇 firebase imports
 import { auth } from "@/config/firebase.config";
+import { useFonts } from "expo-font";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 export default function CreateAccount() {

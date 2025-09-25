@@ -12,7 +12,7 @@ export const options = {
   title: "",
 };
 
-export default function Index() {
+export default function Start() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -37,7 +37,7 @@ export default function Index() {
     setIsLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email.trim(), password);
-      router.push("../tabs"); // redirect after success
+      router.push("../choose-screen"); // redirect after success
     } catch (error: any) {
       console.log("Login error:", error.message);
       Alert.alert("Login Failed", error.message);
@@ -75,7 +75,7 @@ export default function Index() {
             placeholderTextColor="#365486"
           />
 
-          <Pressable onPress={() => router.push("../login/forgot-password")}>
+          <Pressable onPress={() => router.push("../(login)/forgot-password")}>
             <Text style={styles.forgotText}>Forgot your password?</Text>
           </Pressable>
 
@@ -95,7 +95,7 @@ export default function Index() {
         {/* Footer */}
         <View style={styles.footer}>
           <Text style={styles.footerText}>Don’t have an account?</Text>
-          <Pressable onPress={() => router.push("/login/create-account")}>
+          <Pressable onPress={() => router.push("/(login)/create-account")}>
             <Text style={styles.signupText}> Sign Up</Text>
           </Pressable>
         </View>

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Alert, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-export default function Index() {
+export default function ForgotPassword() {
   const [fontsLoaded] = useFonts({
     "DMSerifText-Regular": require("../../assets/fonts/DMSerifText-Regular.ttf"),
   });
