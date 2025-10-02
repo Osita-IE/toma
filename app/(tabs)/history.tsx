@@ -1,20 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { collection, deleteDoc, doc, getDocs, onSnapshot, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import {
-  ActivityIndicator,
-  Alert,
-  FlatList,
-  Modal,
-  Platform,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { ActivityIndicator, Alert, FlatList, Modal, Platform, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View, } from "react-native";
 import { db } from "../../config/firebase.config";
 
 type Client = {
