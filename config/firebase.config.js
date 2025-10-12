@@ -22,3 +22,4 @@ const auth = initializeAuth(app, {
 });
 
 export { app, auth, db };
+
